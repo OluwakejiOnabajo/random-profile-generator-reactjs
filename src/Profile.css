@@ -1,0 +1,69 @@
+.profile-card{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 280px;
+  text-align: center;
+  border: 10px solid #fff;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+}
+
+.profile-card p{
+  color: gray;
+  margin: 0;
+}
+
+.profile-card .user-img{
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  width: 120px;
+  
+}
+
+.profile-card h2{
+  margin-top: 0;
+  color: darkblue;
+}
+
+.profile-card button{
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: darkblue;
+  font-weight: 500;
+  color: #fff;
+  font-size: 14px;
+}
+
+.profile-card button:hover{
+background-color: blueviolet;
+}
+
+.comment{
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+}
+
+.comment, .comment a{
+  text-decoration: none;
+}
+
+.comment span{
+  color: red;
+}
+
+.comment a:hover{
+  color: cornflowerblue;
+}
+
