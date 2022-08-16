@@ -5,7 +5,6 @@
   transform: translate(-50%, -50%);
   margin: 0 auto;
   width: 280px;
-  min-height: 250px;
   text-align: center;
   border: 10px solid #fff;
   background-color: #fff;
@@ -19,6 +18,10 @@
 .profile-card p{
   color: gray;
   margin: 0;
+}
+
+.profile-card .details{
+  height: 220px;
 }
 
 .profile-card .user-img{
@@ -44,9 +47,8 @@
   font-size: 14px;
   text-align: center;
   justify-content: center;
-  position: absolute;
   bottom: 0;
-  right: 0;
+  
 }
 
 .profile-card button:hover{

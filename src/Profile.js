@@ -28,11 +28,12 @@ const Profile = () => {
     
     <>
     <div className='profile-card'>
+      <div className='details'>
       { loading ? <p><i>Loading...</i></p> : <div>
         {
           personData.map((person, index) => {
             return (
-              <div className='details' key={person.cell} >
+              <div key={person.cell} >
               <img src={person.picture.large} className='user-img' alt='user-img' />
               <p>My name is</p>
               <h2>{person.name.first + ' '+ person.name.last}</h2>
@@ -41,9 +42,9 @@ const Profile = () => {
           })
         }
       </div>
-
       }
-      <p className='button-div'><button onClick={profileHandler} type='button' className='user-btn' >{activeProfile ? "Get Another Profile" : "Get Profile"}</button></p>
+      </div>
+      <button onClick={profileHandler} type='button' className='user-btn' >{activeProfile ? "Get Another Profile" : "Get Profile"}</button>
     </div>
     <p className='comment'>Made with <span>❣</span> by <Link to="/" onClick={() => { window.location.href= 'https://github.com/OnabajoOluwakeji'; }} >Oluwakeji Onabajo</Link></p>
     </>
