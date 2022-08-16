@@ -1,3 +1,16 @@
+# Project Detail
+
+### Title: Random Profile Generator from API
+
+### SAIL Tech Talent Project 3
+
+### Description:
+This project generates the bio data of a random person.
+
+### Preview
+This project have been deployed and can be viewed [here - randomprofile-generator](https://randomprofile-generator.herokuapp.com/).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
