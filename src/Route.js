@@ -6,6 +6,7 @@ function MyRoutes() {
   return (
     <BrowserRouter>
     <Routes>
+      {/* Route to profile page */}
       <Route exact path="/" element={<Profile />} />
     </Routes>
   </BrowserRouter>

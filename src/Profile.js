@@ -5,23 +5,26 @@ import { Link} from "react-router-dom";
 import axios from "axios";
 
 const Profile = () => {
-  const [personData, setpersonData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [personData, setpersonData] = useState();
   const [activeProfile, setActiveProfile] = useState(false);
 
   const profileHandler = () => {
-    setLoading(true);
     axios.get('https://randomuser.me/api/')
     .then( (response) => {
-      // console.log(response.data.results);
+      // Set profile data
       setpersonData(response.data.results);
     }).catch((error) => {
-      // console.log(error);
-      setLoading(true);
+      // Display error message while fetching profile
+      console.log(error.message);
     }).finally(() => {
-      setLoading(false);
-      setActiveProfile(true);
+      // Hide loading text while fetching profile
+      // console.log("working");
     })
+  }
+
+  if (personData) {
+        // Change button text to "Get another user"
+    setActiveProfile(true);    
   }
   
   return ( 
@@ -29,8 +32,8 @@ const Profile = () => {
     <>
     <div className='profile-card'>
       <div className='details'>
-      { loading ? <p><i>Loading...</i></p> : <div>
         {
+           personData ? 
           personData.map((person, index) => {
             return (
               <div key={person.cell} >
@@ -39,13 +42,16 @@ const Profile = () => {
               <h2>{person.name.first + ' '+ person.name.last}</h2>
               </div>
             )
-          })
+          }) :
+          // Show loading when getting profile
+          <p><i>Loading...</i></p> 
         }
       </div>
-      }
-      </div>
+      {/* Display "Get Profile" on start and "Get Another Profile" to get another random profile */}
       <button onClick={profileHandler} type='button' className='user-btn' >{activeProfile ? "Get Another Profile" : "Get Profile"}</button>
     </div>
+
+    {/* Footer */}
     <p className='comment'>Made with <span>❣</span> by <Link to="/" onClick={() => { window.location.href= 'https://github.com/OnabajoOluwakeji'; }} >Oluwakeji Onabajo</Link></p>
     </>
 
