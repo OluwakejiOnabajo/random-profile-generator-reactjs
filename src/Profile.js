@@ -5,26 +5,26 @@ import { Link} from "react-router-dom";
 import axios from "axios";
 
 const Profile = () => {
-  const [personData, setpersonData] = useState();
+  const [personData, setpersonData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [activeProfile, setActiveProfile] = useState(false);
 
   const profileHandler = () => {
+    // Display loading text while fetching profile
+    setLoading(true);
     axios.get('https://randomuser.me/api/')
     .then( (response) => {
-      // Set profile data
+      // console.log(response.data.results);
       setpersonData(response.data.results);
     }).catch((error) => {
+      console.log("Error: ", error);
       // Display error message while fetching profile
-      console.log(error.message);
+      setLoading(true);
     }).finally(() => {
       // Hide loading text while fetching profile
-      // console.log("working");
+      setLoading(false);
+      setActiveProfile(true);
     })
-  }
-
-  if (personData) {
-        // Change button text to "Get another user"
-    setActiveProfile(true);    
   }
   
   return ( 
@@ -32,8 +32,13 @@ const Profile = () => {
     <>
     <div className='profile-card'>
       <div className='details'>
+      { loading ?
+      // Show loading when getting profile
+      <p><i>Loading...</i></p> 
+      : 
+      <div>
         {
-           personData ? 
+        // Show profile detail after loading
           personData.map((person, index) => {
             return (
               <div key={person.cell} >
@@ -42,10 +47,10 @@ const Profile = () => {
               <h2>{person.name.first + ' '+ person.name.last}</h2>
               </div>
             )
-          }) :
-          // Show loading when getting profile
-          <p><i>Loading...</i></p> 
+          })
         }
+      </div>
+      }
       </div>
       {/* Display "Get Profile" on start and "Get Another Profile" to get another random profile */}
       <button onClick={profileHandler} type='button' className='user-btn' >{activeProfile ? "Get Another Profile" : "Get Profile"}</button>
